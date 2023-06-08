@@ -1,5 +1,5 @@
 // Selectors
-
+export const getAllPosts = state => state.posts;
 // Actions
 const createActionName = actionName => `app/posts/${actionName}`;
 
