@@ -5,19 +5,19 @@ import PostForm from "../PostForm/PostForm";
 
 const AddPostForm = () => {
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const handleSubmit = post => {
-        dispatch(addPost(post));
-        navigate('/');
-    }
+  const handleSubmit = post => {
+    dispatch(addPost(post));
+    navigate('/');
+  }
 
-    return (
-        <>
-            <PostForm action={handleSubmit} actionText='Add Post' />
-        </>
-    )
+  return (
+    <>
+      <PostForm action={handleSubmit} actionText='Add Post' />
+    </>
+  )
 }
 
 export default AddPostForm;

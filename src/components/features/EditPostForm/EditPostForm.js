@@ -12,15 +12,21 @@ const EditPostForm = () => {
     const navigate = useNavigate();
 
     const handleEdit = post => {
-        navigate('/');
-        dispatch(editPost({ ...post, id }));
+      navigate('/');
+      dispatch(editPost({ ...post, id }));
     };
 
     if (!postData) return <Navigate to='/' />
     return (
-        <>
-            <PostForm actionText='Edit Post' action={handleEdit} author={postData.author} publishedDate={postData.publishedDate} title={postData.title} shortDescription={postData.shortDescription} content={postData.content} />
-        </>
+      <>
+        <PostForm actionText='Edit Post'
+          action={handleEdit}
+          author={postData.author}
+          publishedDate={postData.publishedDate}
+          title={postData.title}
+          shortDescription={postData.shortDescription}
+          content={postData.content} />
+      </>
     )
 }
 
