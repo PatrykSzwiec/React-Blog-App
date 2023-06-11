@@ -37,7 +37,7 @@ const Post = props => {
                         </div>
                     </div>
                     <p><b>Author: </b>{postData.author}<br /><b>Published: </b>{postData.publishedDate}</p>
-                    <p>{postData.shortDescription}</p>
+                    <p>{postData.content}</p>
                 </Card>
             </div>
 
