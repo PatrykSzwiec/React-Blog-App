@@ -5,7 +5,7 @@ import { Button, Card, Modal } from "react-bootstrap";
 import { getPostById, removePost } from "../../../redux/postsRedux";
 import { dateToStr } from "../../utils/dateToStr";
 
-const Post = props => {
+const SinglePost = props => {
 
   const { id } = useParams();
   const postData = useSelector(state => getPostById(state, id))
@@ -38,7 +38,8 @@ const Post = props => {
           </div>
         </div>
         <p><b>Author: </b>{postData.author}<br />
-        <b>Published: </b>{dateToStr(postData.publishedDate)}</p>
+        <b>Published: </b>{dateToStr(postData.publishedDate)}<br/>
+        <b>Category: </b>{postData.category}</p>
         <p dangerouslySetInnerHTML={{ __html: postData.content }} />
       </Card>
     </div>
@@ -64,4 +65,4 @@ const Post = props => {
   </>
   )
 }
-export default Post;
+export default SinglePost;

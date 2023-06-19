@@ -21,9 +21,20 @@ const PostForm = ({ action, actionText, ...props }) => {
   const [contentError, setContentError] = useState(false);
 
   const handleSubmit = () => {
-    setContentError(!content)
-    setDateError(!publishedDate)
-    if(content && publishedDate) {
+    // Remove HTML tags from the content and trim any leading/trailing whitespace
+    const sanitizedContent = content.replace(/<(.|\n)*?>/g, '').trim();
+
+    // Check if the sanitized content is empty
+    const isContentEmpty = sanitizedContent.length === 0;
+
+    const isDateEmpty = !publishedDate;
+
+    if (isContentEmpty || isDateEmpty) {
+      setContentError(isContentEmpty);
+    setDateError(isDateEmpty);
+    } else {
+      setDateError(false);
+      setContentError(false);
       action({ title, author, publishedDate, shortDescription, content });
     }
   };
@@ -73,6 +84,11 @@ const PostForm = ({ action, actionText, ...props }) => {
               <small className="d-block form-text text-danger mt-2">
                 Published date can't be empty
               </small>}
+          </Form.Group>
+
+          <Form.Group className="mb-4">
+
+
           </Form.Group>
 
           <Form.Group className="mb-4">

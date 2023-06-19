@@ -19,6 +19,7 @@ const Posts = () => {
               <Card.Text>
                 <b>Author: </b>{post.author}<br />
                 <b>Published: </b>{dateToStr(post.publishedDate)}<br />
+                <b>Category: </b>{post.category}<br/>
               </Card.Text>
               <Card.Text>
                 {post.shortDescription}
