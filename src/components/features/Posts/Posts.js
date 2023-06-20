@@ -5,13 +5,21 @@ import { Link } from "react-router-dom";
 import { dateToStr } from "../../utils/dateToStr";
 
 
-const Posts = () => {
+const Posts = ({ category }) => {
 
-  const posts = useSelector(getAllPosts);
+  const allPosts = useSelector(getAllPosts);
+
+  let filteredPosts = [];
+
+  if (category) {
+    filteredPosts = allPosts.filter((post) => post.category === category);
+  } else {
+    filteredPosts = allPosts;
+  }
 
   return (
     <Row>
-      {posts.map(post => (
+      {filteredPosts.map(post => (
         <Col key={post.id} xs='12' md='6' lg='4'>
           <Card className='mt-4'>
             <Card.Body>

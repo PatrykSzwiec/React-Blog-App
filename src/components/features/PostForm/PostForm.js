@@ -1,6 +1,8 @@
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { getAllCategories } from "../../../redux/categoriesRedux";
+import { useSelector } from "react-redux";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -20,6 +22,9 @@ const PostForm = ({ action, actionText, ...props }) => {
   const [dateError, setDateError] = useState(false);
   const [contentError, setContentError] = useState(false);
 
+  const [category, setCategory] = useState(props.category || '');
+  const categories = useSelector(getAllCategories);
+
   const handleSubmit = () => {
     // Remove HTML tags from the content and trim any leading/trailing whitespace
     const sanitizedContent = content.replace(/<(.|\n)*?>/g, '').trim();
@@ -31,11 +36,11 @@ const PostForm = ({ action, actionText, ...props }) => {
 
     if (isContentEmpty || isDateEmpty) {
       setContentError(isContentEmpty);
-    setDateError(isDateEmpty);
+      setDateError(isDateEmpty);
     } else {
       setDateError(false);
       setContentError(false);
-      action({ title, author, publishedDate, shortDescription, content });
+      action({ title, author, publishedDate, shortDescription, content, category});
     }
   };
 
@@ -87,8 +92,13 @@ const PostForm = ({ action, actionText, ...props }) => {
           </Form.Group>
 
           <Form.Group className="mb-4">
-
-
+            <Form.Label>Category</Form.Label>
+            <Form.Select value={category} onChange={e => setCategory(e.target.value)} >
+              <option>Select category...</option>
+              <option>{categories[0]}</option>
+              <option>{categories[1]}</option>
+              <option>{categories[2]}</option>
+            </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-4">
