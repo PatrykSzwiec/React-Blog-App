@@ -10,13 +10,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
+import "./PostForm.scss"
+
 const PostForm = ({ action, actionText, ...props }) => {
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
   const [title, setTitle] = useState(props.title || '');
   const [author, setAuthor] = useState(props.author || '');
-  const [publishedDate, setPublishedDate] = useState(new Date());
+  const [publishedDate, setPublishedDate] = useState(props.publishedDate || new Date());
   const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
   const [dateError, setDateError] = useState(false);
@@ -60,7 +62,7 @@ const PostForm = ({ action, actionText, ...props }) => {
 
               {errors.title &&
               <small className="d-block form-text text-danger mt-2">
-                Title is too short (min: 3 characters)
+                Title is too short (min: 4 characters)
               </small>}
           </Form.Group>
 
@@ -75,14 +77,15 @@ const PostForm = ({ action, actionText, ...props }) => {
 
               {errors.author &&
               <small className="d-block form-text text-danger mt-2">
-                Author is too short (min: 3 characters)
+                Author is too short (min: 4 characters)
               </small>}
           </Form.Group>
 
           <Form.Group className="mb-4">
             <Form.Label>Published date</Form.Label><br/>
-            <DatePicker
+            <DatePicker wrapperClassName="datePicker"
               selected={publishedDate}
+              dateFormat="dd/MM/yyyy"
               onChange={(date) => setPublishedDate(date)} />
 
               {dateError &&
