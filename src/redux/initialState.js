@@ -6,7 +6,7 @@ const initialState = {
       title: 'Article title',
       shortDescription: 'Short description of the article...',
       content: 'Main content of the article',
-      publishedDate: new Date ('03-12-2023'),
+      publishedDate: new Date ('2023-12-03'),
       author: 'John Doe',
       category: 'Movies'
     },
@@ -16,7 +16,7 @@ const initialState = {
       title: 'Article title 2',
       shortDescription: 'Short description of the article...',
       content: 'Main content of the article',
-      publishedDate: new Date ('03-12-2023'),
+      publishedDate: new Date ('2024-12-04'),
       author: 'John Doe',
       category: 'News'
     },
@@ -26,7 +26,7 @@ const initialState = {
       title: 'Article title 3',
       shortDescription: 'Short description of the article...',
       content: 'Main content of the article',
-      publishedDate: new Date ('03-12-2023'),
+      publishedDate: new Date ('2022-03-29'),
       author: 'John Doe',
       category: 'Sport'
     },
@@ -36,7 +36,7 @@ const initialState = {
       title: 'Article title 4',
       shortDescription: 'Short description of the article...',
       content: 'Main content of the article',
-      publishedDate: new Date ('12-27-2023'),
+      publishedDate: new Date ('2023-04-17'),
       author: 'John Doe',
       category: 'News'
     }

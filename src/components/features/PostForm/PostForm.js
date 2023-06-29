@@ -85,7 +85,7 @@ const PostForm = ({ action, actionText, ...props }) => {
             <Form.Label>Published date</Form.Label><br/>
             <DatePicker wrapperClassName="datePicker"
               selected={publishedDate}
-              dateFormat="dd/MM/yyyy"
+              dateFormat="dd.MM.yyyy"
               onChange={(date) => setPublishedDate(date)} />
 
               {dateError &&
